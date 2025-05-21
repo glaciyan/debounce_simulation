@@ -1,4 +1,4 @@
-Example Result:
+# Example Result
 
 ```
 | BTN    | V0     | V1     | V2     | SLATCH | event  | errflg |
