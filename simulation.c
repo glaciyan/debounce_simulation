@@ -23,14 +23,12 @@ u8 btn_sample;
 void isr(void)
 {
     btn_sample = ((P1IN BAND P1_BTN_MASK) | ((P3IN BAND P3_BTN_MASK) << 2)) XOR BTN_INVERTER;
-    // maybe we can use the state to xor the input to switch between press and release
 
     u8 VMASK = btn_sample ^ SLATCH;
     V0 &= VMASK;
     V1 &= VMASK;
     V2 &= VMASK;
 
-    // ports that have counted to the max
     u8 VTEMP = VMASK & V0 & V1 & V2;
     SLATCH ^= VTEMP;
 
